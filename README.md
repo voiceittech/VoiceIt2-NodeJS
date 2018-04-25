@@ -140,7 +140,7 @@ Create a new group with the given description
 ```javascript
 myVoiceIt.createGroup({
   description: "Sample Group Description"
-}(jsonResponse)=>{
+},(jsonResponse)=>{
   console.log(jsonResponse)
 });
 ```
@@ -151,7 +151,7 @@ Returns a group for the given groupId(begins with 'grp_')
 ```javascript
 myVoiceIt.getGroup({
   groupId: "GROUP_ID_HERE"
-}(jsonResponse)=>{
+},(jsonResponse)=>{
   console.log(jsonResponse)
 });
 ```

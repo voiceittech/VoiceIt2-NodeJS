@@ -45,8 +45,8 @@ module.exports = function(apk, tok){
       });
     };
 
-    this.getGroupsForUser = (callback) =>{
-      unirest.get(`${BASE_URL}/users/${userId}/groups`)
+    this.getGroupsForUser = (options.callback) =>{
+      unirest.get(`${BASE_URL}/users/${options.userId}/groups`)
       .auth(this.authHeader)
       .end(function (httpResponse) {
         callback(httpResponse.body);
@@ -200,7 +200,7 @@ module.exports = function(apk, tok){
       });
     };
 
-    this.deleteEnrollment = (options, callback) => {
+    this.deleteEnrollmentForUser = (options, callback) => {
       unirest.delete(`${BASE_URL}/enrollments/${options.userId}/${options.enrollmentId}`)
       .auth(this.authHeader)
       .end(function (httpResponse) {
