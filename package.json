@@ -1,0 +1,32 @@
+{
+  "name": "voiceit2-nodejs",
+  "version": "1.0.0",
+  "description": "VoiceIt's API 2.0 Face + Voice Verification/Identification Node Wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voiceittech/voiceit2-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "voiceit",
+    "biometric",
+    "face",
+    "voice",
+    "security",
+    "verification",
+    "identification"
+  ],
+  "author": "Armaan Bindra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/voiceittech/voiceit2-nodejs/issues"
+  },
+  "homepage": "https://github.com/voiceittech/voiceit2-nodejs#readme",
+  "dependencies": {
+    "unirest": "^0.5.1"
+  }
+}
