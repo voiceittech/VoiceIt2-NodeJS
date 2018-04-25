@@ -1,5 +1,4 @@
-# voiceit2-nodejs
-
+# VoiceIt's API 2.0 Node Wrapper
 A NodeJS wrapper for VoiceIt's API2.0 featuring Face + Voice Verification and Identification.
 
 * [Getting Started](#getting-started)
