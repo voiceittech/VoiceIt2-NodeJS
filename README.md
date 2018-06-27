@@ -4,7 +4,7 @@ A NodeJS wrapper for VoiceIt's API 2.0 featuring Voice + Face Verification and I
 
 ## Getting Started
 
-Sign up for a free Developer Account at [VoiceIt.io](https://voiceit.io/signup). Visit the settings tab to activate API 2.0 and view your API Key and Token. 
+Sign up for a free Developer Account at [VoiceIt.io](https://voiceit.io/signup). Visit the settings tab to view your API Key and Token. 
 
 ## API calls
 You can visit our [HTTP API 2.0 Documentation](https://api.voiceit.io/?javascript#introduction) for detailed information on each API call.
