@@ -1,3 +1,5 @@
+<img src="./nodejs.png" width="100%" style="width:100%" />
+
 # VoiceIt2-NodeJS
 
 A NodeJS wrapper for VoiceIt's API 2.0 featuring Voice + Face Verification and Identification.
