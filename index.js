@@ -188,6 +188,18 @@ function VoiceIt2(apk, tok) {
       });
   };
 
+  this.createFaceEnrollmentByUrl = (options, callback) => {
+    unirest.post(`${BASE_URL}/enrollments/face/byUrl`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .field('userId', options.userId)
+      .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
+      .field('fileUrl', options.videoFileURL)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
   this.createVideoEnrollment = (options, callback) => {
     unirest.post(`${BASE_URL}/enrollments/video`)
       .auth(this.authHeader)
@@ -274,6 +286,18 @@ function VoiceIt2(apk, tok) {
       .field('userId', options.userId)
       .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
       .attach('video', options.videoFilePath)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
+  this.faceVerificationByUrl = (options, callback) => {
+    unirest.post(`${BASE_URL}/verification/face/byUrl`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .field('userId', options.userId)
+      .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
+      .field('fileUrl', options.videoFileURL)
       .end((httpResponse) => {
         callback(httpResponse.body);
       });

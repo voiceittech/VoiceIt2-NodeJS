@@ -1,11 +1,23 @@
 language: node_js
 node_js:
-  - "4.0.0"
-  - "4"
-  - "5"
-  - "6"
-  - "7"
-  - "8"
-  - "9"
-  - "10"
-sudo: false
+- node
+- '8'
+- '6'
+before_script:
+- "./before-test"
+- npm i
+script: npm test
+notifications:
+  slack:
+    secure: hf7CIHuMJibaLPMnEruWg3w9s/DI/CxsaOX5PiimuY8FiVO/QygSpHb3cAuYMsIXXoqdjU8oO8tkol8YVtbUKhmdMSqtBJUFK4q6NtIenkGq/pHKaUXf5zTovaekppUTX440xrvT/nWkoTDjv/bbEB7V8+m0piQHbrjgzo12BcUbXsMZ/1LtJDzolhrACoaNZCdA4Z0vDcrE8Bne3hJF+N71ZL0BI9x0AOlhwMlCswhQ70uli2rXmNn06YdVft9VjUa5V29aBv1xXlcmabCyXezvkIgJAVtflyKt103n6xSl6BEDTDiDdjJvXlEilfmhnD5hXUgwJA2dyrZsCmO8HCJ6sWj4KlScPHlS19FBGaA5+fqpdYSYtSrod1rT4W6nn7F+EThIrE1+UC565Ef9hVEqxPdmDEY/YTTWgz9u1rMFDlzxnehpeqhqCezCQoev6aUbeBSDb4XJC77cmkAghJegL+Sx2ZNYReNbxW0Yulbiz/FEojvBns/bzwp523EHqM6JsB2q7x6HiafSQNgyJWL8uhcXy+kWTl/GmeWHsIB5QWEZ3BNzonNuizzYKISO3J4+/RXmxfFdjZJuBQU2Oyygcf2oxfAz7gGqC+YLd/Bd10WVeZJnqs1FR0ANqThqakaaRVR7LS4xWwVmUPdiJ46Bb+j9Shu/n1v44rbz030=
+  email:
+    on_success: never
+    on_failure: never
+deploy:
+  provider: npm
+  email: armaan@voiceit.io
+  api_key:
+    secure: nYQ0IR3OOmAJW52YwkBIGnfggzD9qEEMA3eyeoy+XP+8vpmhI3u+PyDzJNSuX0Km94Xw0kqN9oKJ2MaZFTHEwA3QMZ9W+BIuF11UJZYpZ1mT37+ZRwvSnGx6aYdcSkTr2bJPiI9FrgMld9OJN1UmlNOHAQ6iTnQQ8F/eF+2yVGs5jsV6o36gmPre/96ds3E1RUoHtTc0p2mz2craxJQixCHuOe2vwdMzepKadbNnsrp3aQA9pDV1ePg7NseSFX9CaR3WPNNrS8kKPTjTNYtEuPJ48plFvMKrSvAqwxXmHftYYNpU9R5USI+u7DOF/VapFKhxd1wLBH8MVXJSZsDQ1YEM3vpn3qkoeH49gKuZUB6E6JKThOdVC59/nmIoQcOnZM469sYNlXO9zIRHv1HiBVmssC/ZAxUQYgpqi2KzoEkleazQFt46N+wtO9RLuvS3SW2mdp8Jh1ExKQv0crHFBtGerWxHcUQcd3BIE20L19iflyG+9AKNtuA/ql1MU4NqvxHJeIFqTBwKo3GI1G0NmnC1fsrHKT89/CkoMSn7T4xXi732zbFdesqO7dvNrAq0fMLirXhuCajodpS2irWt5QM3b/LfhC5sDPCLF9xba9ryIrKKCuWahhZ1qDg1PLYc2I4B0Pf8hDfcbfol1FmY/XNw42nWixTmNHtsxNMmFhU=
+  on:
+    branch: master
+    node: '8'
