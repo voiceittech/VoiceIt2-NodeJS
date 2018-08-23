@@ -1,10 +1,13 @@
 #!/bin/bash
-commit=$(git log -1 --pretty=%B | head -n 1)
+# commit=$(git log -1 --pretty=%B | head -n 1)
+commit="RELEASEPATCH"
 version=$(echo $(npm search voiceit2 | grep voiceit2 | awk '{print $11}') | tr "." "\n")
 set -- $version
+
 major=$1
 minor=$2
 patch=$3
+oldversion=$major'.'$minor'.'$patch
 
 if [[ $commit = *"RELEASE"* ]];
 then
@@ -26,5 +29,5 @@ then
   fi
 
   version=$major'.'$minor'.'$patch
-  echo $version
+  sed -i -e 's/'$oldversion'/'$version'/g' package.json
 fi
