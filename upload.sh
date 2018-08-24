@@ -33,4 +33,7 @@ then
   REPLACE_VERSION='s/'$oldversion'/'$version'/g'
   sed -i $REPLACE_VERSION package.json
   cat package.json | awk 'NR==3'
+else
+    echo "Doing nothing"
+    exit 1
 fi
