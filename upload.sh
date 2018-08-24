@@ -29,5 +29,7 @@ then
   fi
 
   version=$major'.'$minor'.'$patch
-  sed -i -e 's/'$oldversion'/'$version'/g' package.json
+  REPLACE_VERSION='s/'$oldversion'/'$version'/g'
+  sed -i '' $REPLACE_VERSION package.json
+  cat package.json | awk 'NR==3'
 fi
