@@ -15,9 +15,6 @@ notifications:
     on_failure: never
 after_success:
   - "./upload.sh"
-  - echo $DO_DEPLOY
-  - source ~/.profile
-  - echo $DO_DEPLOY
 deploy:
   skip_cleanup: true
   provider: npm
@@ -27,9 +24,3 @@ deploy:
   on:
     branch: master
     condition: $DO_DEPLOY = YES
-after_deploy:
-  - git config --global user.email "andrew@voiceit.io"
-  - git config --global user.name "voiceitbot"
-  - git add package.json
-  - git commit -m "Updated Version"
-  - git push https://${GH_TOKEN}@github.com/voiceittech/voiceit2-nodejs.git master

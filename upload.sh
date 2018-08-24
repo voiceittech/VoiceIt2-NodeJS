@@ -35,9 +35,11 @@ then
   cat package.json | awk 'NR==3'
   export DO_DEPLOY=YES
   echo "DO_DEPLOY=YES" >> ~/.profile
+  source ~/.profile
 else
     export DO_DEPLOY=NO
     echo "DO_DEPLOY=NO" >> ~/.profile
+    source ~/.profile
     echo "Tests passed but did not deploy"
     exit 0
 fi
