@@ -15,7 +15,6 @@ notifications:
     on_failure: never
 after_success:
   - "./upload.sh"
-before_deploy:
   - echo $DO_DEPLOY
   - source ~/.profile
   - echo $DO_DEPLOY
