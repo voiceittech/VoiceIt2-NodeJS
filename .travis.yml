@@ -17,6 +17,7 @@ notifications:
 before_deploy:
 - ./upload.sh
 deploy:
+  skip_cleanup: true
   provider: npm
   email: armaan@voiceit.io
   api_key:
