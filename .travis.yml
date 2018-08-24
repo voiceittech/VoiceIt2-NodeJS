@@ -4,18 +4,22 @@ node_js:
 before_script:
 - "./before-test"
 - npm i
-# script: npm test
-script: echo 'never forget tomorrow is a new day'
+script: 
+# - npm test
+- echo "Passed Test"
 after_script:
 - rm -r test-data
 notifications:
   slack:
-    secure: PiaWjz816GmDj914glLCRoZDhi6UhKGSCurqczLSI/fo+sZPJRI2AEsS8cDm2kUu3Qbv40GjG4gcyyLNSOT4A3Ox+uBYmRyVy9ouHRHBS7iHaWLzI1875UWrtBbrRpqP5jwKd4jWw+39D0FEZtWIKHrJSDQvY9bwKlNvjJWzSw/Ea4hmRgYclWi8bbnYAkyCSrSXycjREVBPv8wt0YRnSfYC7Fn6VCmp8AOUqp5ZF1jgg2OB2O16IOU24g7xC4/6nsr8MP75+7m0gZMGb0blzaoxTWgm1v0/NFtFHoz5afNibD74dIJviZWnpQHDvy0saKmGULhCWpJWF/rNhBRtSrHuUXAOqQG9Lss+82X75aHfZWUy5O+nxwml9YGa4ryOptFl/jkP9PkyGlfnII1opjEN6/+JWmBFAw7GuZEN+LR+Cm30wAeo37wqeBvY5XPX9r0EYnKOZAklFGVZhnNYpvRhSKKO5Bv1g/4KyMk5oANF6BHnhKSrAr6DZ0PpZElbGcuw0gbaSD01Bd63C22RBftkZTEGA7gYqZ8cSUI8GGXVPwVyemh3lKRe0QC+60bPQ2omjgxDqVWPyj+NK0xirGWxk3jNBBb66GzRp6buiCBmmwDcz43Re0rUijwz8kcqR8eX0ht5ELILgkZFIIBq/ZekYaV90foBJWK17aAYq/w=
+    secure: rk/dzRcu62bvJcyXodbqFhoamjoZc96nxxiFj1hQhd7Z3ZXvVedata4/dR2Tg+WzwPz3YrB3YEGMr7oh0kJinYGYYl2hoPH3cuET+xORecFNcj3Li20oEFZCt1X3azJcnusTc0s/KOcoBSwo3rgX1b8QwahdDnTTuVkzXKhf93y2MQIbi7wvzdz0488elttWXqpUaKKQdjJ0VqOha1EPshzJyYqoMonmESnGA64v9eCXUWMuwAp390zOxY8/pQtCkX7Y9ovO3A2pgROUvxPT//071df+b9D1dz3rytoUQIoDmTkUY4Zn9d+RTFpiG18nf0O2pW4T375dcBlN2v0gi3zhd1odFLt1Q269mbRVJH8PChFAzwok7OhSS5kf6JdC0riNHLn7qDVkM1vNUv21P64d6jtEVO7TmxOeZD2c8M4IPJ7AhtB/3Uq1cFPk5ZTcaOEYbpnCCEKOv1KtJPS1NC+qY4vKX6IjnyXRP0Qidlz9poFa0j3tgRFbMPI8xgrd3KWwHgFc8xVfdQoymf/Dy7P5mY2+r3rt0hKrBR4bPcN8S6O5QocbtyBiA9Kcmiv6wDP62PEEsuQTlWG3d2+7TfOVdHYppeFN/h7pWbMyK2nDNMHXh4c64lQVsYWDatjYtD3T4txAESzZ3OVP83IV+ZxiomtMbLRAS8apM2wKVyE=
   email:
     on_success: never
     on_failure: never
 before_deploy:
-- ./upload.sh
+- "./upload.sh"
+- git add package.json
+- git commit -m "Updated Version"
+- git push origin master
 deploy:
   skip_cleanup: true
   provider: npm
