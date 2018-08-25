@@ -8,6 +8,7 @@ const voiceIdentificationTestCases = [
     contentLanguage: config.CONTENT_LANGUAGE_REAL,
     audioFilePath: config.ENROLLMENT_FILE_ARMAAN_1,
     expectedText: config.ENGLISH_PHRASE,
+    phrase: config.ENGLISH_PHRASE,
     user: 'Armaan',
     expectedMessage:'Successfully identified voice for user with userId : usr_([a-z0-9]){32} in group with groupId : grp_([a-z0-9]){32}'
   },
@@ -17,6 +18,7 @@ const voiceIdentificationTestCases = [
     contentLanguage: config.CONTENT_LANGUAGE_REAL,
     audioFilePath: config.ENROLLMENT_FILE_STEPHEN_1,
     expectedText: config.ENGLISH_PHRASE,
+    phrase: config.ENGLISH_PHRASE,
     user: 'Stephen',
     expectedMessage:'Successfully identified voice for user with userId : usr_([a-z0-9]){32} in group with groupId : grp_([a-z0-9]){32}'
   }

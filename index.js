@@ -1,6 +1,16 @@
 const unirest = require('unirest');
+const fs = require('fs');
 
 const BASE_URL = 'https://api.voiceit.io';
+
+function checkFileExists(filePath, callback) {
+  if (!fs.existsSync(filePath)) {
+    callback(Error(`File Path ${filePath} Does Not Exist`));
+    return false;
+  }
+  return true;
+}
+
 function VoiceIt2(apk, tok) {
   this.apiKey = apk;
   this.authToken = tok;
@@ -19,6 +29,15 @@ function VoiceIt2(apk, tok) {
 
   this.getAllUsers = (callback) => {
     unirest.get(`${BASE_URL}/users`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
+  this.getPhrases = (options, callback) => {
+    unirest.get(`${BASE_URL}/phrases/${options.contentLanguage}`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .end((httpResponse) => {
@@ -134,8 +153,8 @@ function VoiceIt2(apk, tok) {
 
   /* Enrollment API Calls */
 
-  this.getAllEnrollmentsForUser = (options, callback) => {
-    unirest.get(`${BASE_URL}/enrollments/${options.userId}`)
+  this.getAllVoiceEnrollments = (options, callback) => {
+    unirest.get(`${BASE_URL}/enrollments/voice/${options.userId}`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .end((httpResponse) => {
@@ -143,7 +162,7 @@ function VoiceIt2(apk, tok) {
       });
   };
 
-  this.getFaceEnrollmentsForUser = (options, callback) => {
+  this.getAllFaceEnrollments = (options, callback) => {
     unirest.get(`${BASE_URL}/enrollments/face/${options.userId}`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
@@ -152,12 +171,25 @@ function VoiceIt2(apk, tok) {
       });
   };
 
+  this.getAllVideoEnrollments = (options, callback) => {
+    unirest.get(`${BASE_URL}/enrollments/video/${options.userId}`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
   this.createVoiceEnrollment = (options, callback) => {
-    unirest.post(`${BASE_URL}/enrollments`)
+    if (!checkFileExists(options.audioFilePath, callback)) {
+      return;
+    }
+    unirest.post(`${BASE_URL}/enrollments/voice`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('userId', options.userId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .attach('recording', options.audioFilePath)
       .end((httpResponse) => {
         callback(httpResponse.body);
@@ -165,11 +197,12 @@ function VoiceIt2(apk, tok) {
   };
 
   this.createVoiceEnrollmentByUrl = (options, callback) => {
-    unirest.post(`${BASE_URL}/enrollments/byUrl`)
+    unirest.post(`${BASE_URL}/enrollments/voice/byUrl`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('userId', options.userId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('fileUrl', options.audioFileURL)
       .end((httpResponse) => {
         callback(httpResponse.body);
@@ -177,6 +210,9 @@ function VoiceIt2(apk, tok) {
   };
 
   this.createFaceEnrollment = (options, callback) => {
+    if (!checkFileExists(options.videoFilePath, callback)) {
+      return;
+    }
     unirest.post(`${BASE_URL}/enrollments/face`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
@@ -201,11 +237,15 @@ function VoiceIt2(apk, tok) {
   };
 
   this.createVideoEnrollment = (options, callback) => {
+    if (!checkFileExists(options.videoFilePath, callback)) {
+      return;
+    }
     unirest.post(`${BASE_URL}/enrollments/video`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('userId', options.userId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
       .attach('video', options.videoFilePath)
       .end((httpResponse) => {
@@ -219,6 +259,7 @@ function VoiceIt2(apk, tok) {
       .headers(this.platformHeader)
       .field('userId', options.userId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
       .field('fileUrl', options.videoFileURL)
       .end((httpResponse) => {
@@ -235,8 +276,8 @@ function VoiceIt2(apk, tok) {
       });
   };
 
-  this.deleteEnrollmentForUser = (options, callback) => {
-    unirest.delete(`${BASE_URL}/enrollments/${options.userId}/${options.enrollmentId}`)
+  this.deleteVoiceEnrollment = (options, callback) => {
+    unirest.delete(`${BASE_URL}/enrollments/voice/${options.userId}/${options.voiceEnrollmentId}`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .end((httpResponse) => {
@@ -244,7 +285,43 @@ function VoiceIt2(apk, tok) {
       });
   };
 
-  this.deleteAllEnrollmentsForUser = (options, callback) => {
+  this.deleteVideoEnrollment = (options, callback) => {
+    unirest.delete(`${BASE_URL}/enrollments/video/${options.userId}/${options.videoEnrollmentId}`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
+  this.deleteAllFaceEnrollments = (options, callback) => {
+    unirest.delete(`${BASE_URL}/enrollments/${options.userId}/face`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
+  this.deleteAllVoiceEnrollments = (options, callback) => {
+    unirest.delete(`${BASE_URL}/enrollments/${options.userId}/voice`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
+  this.deleteAllVideoEnrollments = (options, callback) => {
+    unirest.delete(`${BASE_URL}/enrollments/${options.userId}/video`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
+  this.deleteAllEnrollments = (options, callback) => {
     unirest.delete(`${BASE_URL}/enrollments/${options.userId}/all`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
@@ -256,11 +333,15 @@ function VoiceIt2(apk, tok) {
   /* Verification API Calls */
 
   this.voiceVerification = (options, callback) => {
-    unirest.post(`${BASE_URL}/verification`)
+    if (!checkFileExists(options.audioFilePath, callback)) {
+      return;
+    }
+    unirest.post(`${BASE_URL}/verification/voice`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('userId', options.userId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .attach('recording', options.audioFilePath)
       .end((httpResponse) => {
         callback(httpResponse.body);
@@ -268,11 +349,12 @@ function VoiceIt2(apk, tok) {
   };
 
   this.voiceVerificationByUrl = (options, callback) => {
-    unirest.post(`${BASE_URL}/verification/byUrl`)
+    unirest.post(`${BASE_URL}/verification/voice/byUrl`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('userId', options.userId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('fileUrl', options.audioFileURL)
       .end((httpResponse) => {
         callback(httpResponse.body);
@@ -280,6 +362,9 @@ function VoiceIt2(apk, tok) {
   };
 
   this.faceVerification = (options, callback) => {
+    if (!checkFileExists(options.videoFilePath, callback)) {
+      return;
+    }
     unirest.post(`${BASE_URL}/verification/face`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
@@ -304,11 +389,15 @@ function VoiceIt2(apk, tok) {
   };
 
   this.videoVerification = (options, callback) => {
+    if (!checkFileExists(options.videoFilePath, callback)) {
+      return;
+    }
     unirest.post(`${BASE_URL}/verification/video`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('userId', options.userId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
       .attach('video', options.videoFilePath)
       .end((httpResponse) => {
@@ -322,6 +411,7 @@ function VoiceIt2(apk, tok) {
       .headers(this.platformHeader)
       .field('userId', options.userId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
       .field('fileUrl', options.videoFileURL)
       .end((httpResponse) => {
@@ -332,11 +422,15 @@ function VoiceIt2(apk, tok) {
   /* Identification API Calls */
 
   this.voiceIdentification = (options, callback) => {
-    unirest.post(`${BASE_URL}/identification`)
+    if (!checkFileExists(options.audioFilePath, callback)) {
+      return;
+    }
+    unirest.post(`${BASE_URL}/identification/voice`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('groupId', options.groupId === 'NONE' ? null : options.groupId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .attach('recording', options.audioFilePath)
       .end((httpResponse) => {
         callback(httpResponse.body);
@@ -344,23 +438,53 @@ function VoiceIt2(apk, tok) {
   };
 
   this.voiceIdentificationByUrl = (options, callback) => {
-    unirest.post(`${BASE_URL}/identification/byUrl`)
+    unirest.post(`${BASE_URL}/identification/voice/byUrl`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('groupId', options.groupId === 'NONE' ? null : options.groupId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('fileUrl', options.audioFileURL)
       .end((httpResponse) => {
         callback(httpResponse.body);
       });
   };
 
+  this.faceIdentification = (options, callback) => {
+    if (!checkFileExists(options.videoFilePath, callback)) {
+      return;
+    }
+    unirest.post(`${BASE_URL}/identification/face`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .field('groupId', options.groupId === 'NONE' ? null : options.groupId)
+      .attach('video', options.videoFilePath)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
+  this.faceIdentificationByUrl = (options, callback) => {
+    unirest.post(`${BASE_URL}/identification/face/byUrl`)
+      .auth(this.authHeader)
+      .headers(this.platformHeader)
+      .field('groupId', options.groupId === 'NONE' ? null : options.groupId)
+      .field('fileUrl', options.videoFileURL)
+      .end((httpResponse) => {
+        callback(httpResponse.body);
+      });
+  };
+
   this.videoIdentification = (options, callback) => {
+    if (!checkFileExists(options.videoFilePath, callback)) {
+      return;
+    }
     unirest.post(`${BASE_URL}/identification/video`)
       .auth(this.authHeader)
       .headers(this.platformHeader)
       .field('groupId', options.groupId === 'NONE' ? null : options.groupId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
       .attach('video', options.videoFilePath)
       .end((httpResponse) => {
@@ -374,6 +498,7 @@ function VoiceIt2(apk, tok) {
       .headers(this.platformHeader)
       .field('groupId', options.groupId === 'NONE' ? null : options.groupId)
       .field('contentLanguage', options.contentLanguage)
+      .field('phrase', options.phrase ? options.phrase : '')
       .field('doBlinkDetection', (options.doBlinkDetection != null) ? options.doBlinkDetection : false)
       .field('fileUrl', options.videoFileURL)
       .end((httpResponse) => {

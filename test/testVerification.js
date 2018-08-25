@@ -138,6 +138,7 @@ describe('Testing All Verification API Calls', function() {
             ? testCase.userId
             : verification.currentUserIds[0],
           contentLanguage: testCase.contentLanguage,
+          phrase: testCase.phrase ? testCase.phrase : '',
           audioFilePath: testCase.audioFilePath
         }, (jsonResponse) => {
           utilities.printIfError(testCase.expectedRc, jsonResponse);
@@ -166,6 +167,7 @@ describe('Testing All Verification API Calls', function() {
             ? testCase.userId
             : verification.currentUserIds[0],
           contentLanguage: testCase.contentLanguage,
+          phrase: testCase.phrase ? testCase.phrase : '',
           audioFileURL: testCase.audioFileURL
         }, (jsonResponse) => {
           utilities.printIfError(testCase.expectedRc, jsonResponse);
@@ -194,7 +196,8 @@ describe('Testing All Verification API Calls', function() {
             ? testCase.userId
             : verification.currentUserIds[0],
           videoFilePath: testCase.videoFilePath,
-          doBlinkDetection: false
+          doBlinkDetection: false,
+          phrase: testCase.phrase ? testCase.phrase : ''
         }, (jsonResponse) => {
           utilities.printIfError(testCase.expectedRc, jsonResponse);
           assert.equal(jsonResponse.responseCode, testCase.expectedRc);
@@ -219,7 +222,8 @@ describe('Testing All Verification API Calls', function() {
             ? testCase.userId
             : verification.currentUserIds[0],
           videoFileURL: testCase.videoFileURL,
-          doBlinkDetection: false
+          doBlinkDetection: false,
+          phrase: testCase.phrase ? testCase.phrase : ''
         }, (jsonResponse) => {
           utilities.printIfError(testCase.expectedRc, jsonResponse);
           assert.equal(jsonResponse.responseCode, testCase.expectedRc);
@@ -245,7 +249,7 @@ describe('Testing All Verification API Calls', function() {
             : verification.currentUserIds[1],
           videoFilePath: testCase.videoFilePath,
           contentLanguage: testCase.contentLanguage,
-
+          phrase: testCase.phrase ? testCase.phrase : ''
         }, (jsonResponse) => {
           utilities.printIfError(testCase.expectedRc, jsonResponse);
           if(jsonResponse.responseCode == responseCode.SUCCESS){
@@ -274,7 +278,7 @@ describe('Testing All Verification API Calls', function() {
             : verification.currentUserIds[1],
           videoFileURL: testCase.videoFileURL,
           contentLanguage: testCase.contentLanguage,
-
+          phrase: testCase.phrase ? testCase.phrase : ''
         }, (jsonResponse) => {
           utilities.printIfError(testCase.expectedRc, jsonResponse);
           if(jsonResponse.responseCode == responseCode.SUCCESS){

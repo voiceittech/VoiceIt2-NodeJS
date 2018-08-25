@@ -5,8 +5,10 @@ let utilities = require('../utilities/utilities');
 let responseCode = require('../utilities/response-code');
 let voiceIdentificationTestCases = require('../test-cases/voiceIdentificationTestCases');
 let videoIdentificationTestCases = require('../test-cases/videoIdentificationTestCases');
+let faceIdentificationTestCases = require('../test-cases/faceIdentificationTestCases');
 let voiceIdentificationByUrlTestCases = require('../test-cases/voiceIdentificationByUrlTestCases');
 let videoIdentificationByUrlTestCases = require('../test-cases/videoIdentificationByUrlTestCases');
+let faceIdentificationByUrlTestCases = require('../test-cases/faceIdentificationByUrlTestCases');
 
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
 let MAX_TIMEOUT = 100000;
@@ -151,7 +153,8 @@ describe('Testing Identification Calls', function(){
             {
               groupId : testCase.groupId ? testCase.groupId : identification.currentGroupIds[0],
               audioFilePath : testCase.audioFilePath,
-              contentLanguage : testCase.contentLanguage
+              contentLanguage : testCase.contentLanguage,
+              phrase: testCase.phrase ? testCase.phrase : ''
             },
             (jsonResponse) => {
               utilities.printIfError(testCase.expectedRc, jsonResponse);
@@ -182,7 +185,8 @@ describe('Testing Identification Calls', function(){
             {
               groupId : testCase.groupId ? testCase.groupId : identification.currentGroupIds[0],
               audioFileURL : testCase.audioFileURL,
-              contentLanguage : testCase.contentLanguage
+              contentLanguage : testCase.contentLanguage,
+              phrase: testCase.phrase ? testCase.phrase : ''
             },
             (jsonResponse) => {
               utilities.printIfError(testCase.expectedRc, jsonResponse);
@@ -214,6 +218,7 @@ describe('Testing Identification Calls', function(){
               groupId : testCase.groupId ? testCase.groupId : identification.currentGroupIds[0],
               videoFilePath : testCase.videoFilePath,
               contentLanguage : testCase.contentLanguage,
+              phrase: testCase.phrase ? testCase.phrase : '',
               doBlinkDetection : testCase.doBlinkDetection ? testCase.doBlinkDetection : false
             },
             (jsonResponse) => {
@@ -246,6 +251,7 @@ describe('Testing Identification Calls', function(){
               groupId : testCase.groupId ? testCase.groupId : identification.currentGroupIds[0],
               videoFileURL : testCase.videoFileURL,
               contentLanguage : testCase.contentLanguage,
+              phrase: testCase.phrase ? testCase.phrase : '',
               doBlinkDetection : testCase.doBlinkDetection ? testCase.doBlinkDetection : false
             },
             (jsonResponse) => {
@@ -267,5 +273,61 @@ describe('Testing Identification Calls', function(){
         });
       });
     });
+
+    describe('Test Face Identification', function(){
+        faceIdentificationTestCases.forEach(function(testCase){
+          it(`should return ${testCase.expectedRc}`, function(done){
+            this.timeout(MAX_TIMEOUT);
+            let itThis = this;
+            myVoiceIt.faceIdentification(
+              {
+                groupId : testCase.groupId ? testCase.groupId : identification.currentGroupIds[0],
+                videoFilePath : testCase.videoFilePath,
+                doBlinkDetection : testCase.doBlinkDetection ? testCase.doBlinkDetection : false
+              },
+              (jsonResponse) => {
+                utilities.printIfError(testCase.expectedRc, jsonResponse);
+                assert.equal(jsonResponse.responseCode, testCase.expectedRc);
+                assert.equal(jsonResponse.status, testCase.expectedSc);
+                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
+                if(testCase.user == "Armaan"){
+                  assert.equal(jsonResponse.userId, identification.currentUserIds[0])
+                }
+                if(testCase.user == "Stephen"){
+                  assert.equal(jsonResponse.userId, identification.currentUserIds[1])
+                }
+                done();
+              });
+          });
+        });
+    });
+
+    describe('Test Face Identification By URL', function(){
+        faceIdentificationByUrlTestCases.forEach(function(testCase){
+          it(`should return ${testCase.expectedRc}`, function(done){
+            this.timeout(MAX_TIMEOUT);
+            let itThis = this;
+            myVoiceIt.faceIdentificationByUrl(
+              {
+                groupId : testCase.groupId ? testCase.groupId : identification.currentGroupIds[0],
+                videoFileURL : testCase.videoFileURL,
+                doBlinkDetection : testCase.doBlinkDetection ? testCase.doBlinkDetection : false
+              },
+              (jsonResponse) => {
+                utilities.printIfError(testCase.expectedRc, jsonResponse);
+                assert.equal(jsonResponse.responseCode, testCase.expectedRc);
+                assert.equal(jsonResponse.status, testCase.expectedSc);
+                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
+                if(testCase.user == "Armaan"){
+                  assert.equal(jsonResponse.userId, identification.currentUserIds[0])
+                }
+                if(testCase.user == "Stephen"){
+                  assert.equal(jsonResponse.userId, identification.currentUserIds[1])
+                }
+                done();
+              });
+          });
+        });
+      });
 
   });

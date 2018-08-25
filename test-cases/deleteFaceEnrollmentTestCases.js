@@ -9,6 +9,7 @@ const deleteFaceEnrollmentTestCases = [
     expectedMessage:'Invalid faceEnrollmentId'
   },
   {
+    faceEnrollmentId: null,
     expectedRc: responseCode.SUCCESS,
     expectedSc: 200,
     expectedMessage:'Deleted face enrollment with faceEnrollmentId : (.*) for user with userId : usr_([a-z0-9]){32}'

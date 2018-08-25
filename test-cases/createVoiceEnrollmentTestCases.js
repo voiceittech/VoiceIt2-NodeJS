@@ -8,6 +8,7 @@ const createVoiceEnrollmentTestCases = [
   contentLanguage: config.CONTENT_LANGUAGE_REAL,
   audioFilePath: config.ENROLLMENT_FILE_ARMAAN_1,
   expectedText: config.ENGLISH_PHRASE,
+  phrase: config.ENGLISH_PHRASE,
   expectedMessage:'Successfully enrolled voice for user with userId : usr_([a-z0-9]){32}'
 }
 ];

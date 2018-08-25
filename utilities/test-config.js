@@ -1,5 +1,6 @@
 const TestConfig = {
   CONTENT_LANGUAGE_REAL : 'en-US',
+  CONTENT_LANGUAGE_FAKE : 'asdasd',
   FAKE_USER_ID: 'usr_asdsadsadsa',
   FAKE_GROUP_ID: 'grp_asdsadsadsa',
   S3_FILES_URL:'https://s3.amazonaws.com/voiceit-api2-testing-files/',

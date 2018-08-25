@@ -8,6 +8,7 @@ const createVideoEnrollmentByUrlTestCases = [
   contentLanguage: config.CONTENT_LANGUAGE_REAL,
   videoFileURL: config.getURL(config.VIDEO_ENROLLMENT_FILE_ARMAAN_2),
   expectedText: config.ENGLISH_PHRASE,
+  phrase: config.ENGLISH_PHRASE,
   expectedMessage:'Successfully enrolled video for user with userId : usr_([a-z0-9]){32}'
 }
 ];

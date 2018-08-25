@@ -8,6 +8,7 @@ const videoVerificationTestCases = [
   contentLanguage: config.CONTENT_LANGUAGE_REAL,
   videoFilePath: config.VIDEO_VERIFICATION_FILE_ARMAAN_1,
   expectedText: config.ENGLISH_PHRASE,
+  phrase: config.ENGLISH_PHRASE,
   expectedMessage:'Successfully verified video for user with userId : usr_([a-z0-9]){32}'
 }
 ];

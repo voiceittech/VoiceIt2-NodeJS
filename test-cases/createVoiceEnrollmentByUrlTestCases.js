@@ -8,6 +8,7 @@ const createVoiceEnrollmentByUrlTestCases = [
   contentLanguage: config.CONTENT_LANGUAGE_REAL,
   audioFileURL: config.getURL(config.ENROLLMENT_FILE_ARMAAN_2),
   expectedText: config.ENGLISH_PHRASE,
+  phrase: config.ENGLISH_PHRASE,
   expectedMessage:'Successfully enrolled voice for user with userId : usr_([a-z0-9]){32}'
 }
 ];

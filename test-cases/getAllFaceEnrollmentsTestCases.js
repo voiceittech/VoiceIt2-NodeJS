@@ -1,7 +1,7 @@
 let config = require('../utilities/test-config');
 let responseCode = require('../utilities/response-code');
 
-const getFaceEnrollmentsTestCases = [
+const getAllFaceEnrollmentsTestCases = [
 {
   expectedRc: responseCode.SUCCESS,
   expectedSc: 200,
@@ -9,4 +9,4 @@ const getFaceEnrollmentsTestCases = [
 }
 ];
 
-module.exports = getFaceEnrollmentsTestCases;
+module.exports = getAllFaceEnrollmentsTestCases;
