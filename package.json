@@ -28,9 +28,10 @@
   },
   "homepage": "https://github.com/voiceittech/voiceit2-nodejs#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "form-data": "^2.3.2",
     "mocha": "^5.2.0",
-    "npm": "^6.2.0",
-    "unirest": "^0.5.1"
+    "npm": "^6.4.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

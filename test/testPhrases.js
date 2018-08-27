@@ -24,10 +24,6 @@ describe('Testing All Phrase API Calls', function(){
     done();
   });
 
-  after(function(){
-    console.log('Test Phrases Done');
-  });
-
   describe('Test Get Phrases', function(){
       getPhrasesTestCases.forEach(function(testCase){
         it(`should return ${testCase.expectedRc}`, function(done){
