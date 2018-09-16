@@ -5,5 +5,5 @@ git config --global user.name "voiceitbot"
 cp package.json $HOME/voiceit2nodejs-gm/
 cd $HOME/voiceit2nodejs-gm
 git add package.json
-git commit -m "Updated Version"
+git commit -m "Updated Version [skip ci]"
 git push origin master
