@@ -13,7 +13,6 @@ function checkFileExists(filePath, callback) {
 }
 
 function VoiceIt2(apk, tok) {
-
   this.axiosInstance = axios.create({
     auth: {
       username: apk,
