@@ -7,6 +7,7 @@ let getAllUsersTestCases = require('../test-cases/getAllUsersTestCases');
 let checkUserExistsTestCases = require('../test-cases/checkUserExistsTestCases');
 let createUserTestCases = require('../test-cases/createUserTestCases');
 let deleteUserTestCases = require('../test-cases/deleteUserTestCases');
+let createUserTokenTestCases = require('../test-cases/createUserTokenTestCases');
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
 let MAX_TIMEOUT = 30000;
 let SETUP_TIMEOUT = 20000;
@@ -90,6 +91,27 @@ describe('Testing All User API Calls', function(){
               assert.equal(jsonResponse.responseCode, testCase.expectedRc);
               assert.equal(jsonResponse.exists, testCase.expectedExists);
               assert.equal(jsonResponse.status, testCase.expectedSc);
+              assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
+              done();
+            });
+        });
+      });
+  });
+
+  describe('Test User Token', function(){
+      createUserTokenTestCases.forEach(function(testCase){
+        it(`should return ${testCase.expectedRc}`, function(done){
+          this.timeout(MAX_TIMEOUT);
+          let itThis = this;
+          myVoiceIt.createUserToken(
+            {
+              userId: testCase.userId ? testCase.userId : users.currentUserIds[0],
+            },
+            (jsonResponse) => {
+              utilities.printIfError(testCase.expectedRc, jsonResponse);
+              assert.equal(jsonResponse.responseCode, testCase.expectedRc);
+              assert.equal(jsonResponse.status, testCase.expectedSc);
+              assert.ok(utilities.compare(jsonResponse.userToken, testCase.userToken));
               assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
               done();
             });

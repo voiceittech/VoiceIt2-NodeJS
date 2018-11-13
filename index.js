@@ -583,6 +583,20 @@ function VoiceIt2(apk, tok) {
       callback(error.response.data);
     });
   };
+
+  this.createUserToken = (options, callback) => {
+    if (options.userId === undefined) {
+      callback({ status: 400, responseCode: '', message: 'Please pass userId' });
+    }
+    this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token`)
+      .then((httpResponse) => {
+        // console.log(httpResponse);
+        callback(httpResponse.data);
+      }).catch((error) => {
+        // console.log(error.response);
+        callback(error.response.data);
+      });
+  };
 }
 
 module.exports = VoiceIt2;
