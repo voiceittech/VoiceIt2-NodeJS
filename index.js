@@ -586,14 +586,12 @@ function VoiceIt2(apk, tok) {
 
   this.createUserToken = (options, callback) => {
     if (options.userId === undefined) {
-      callback({ status: 400, responseCode: '', message: 'Please pass userId' });
+      callback({ status: 400, responseCode: 'FAIL', message: 'Missing userId argument' });
     }
     this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token`)
       .then((httpResponse) => {
-        // console.log(httpResponse);
         callback(httpResponse.data);
       }).catch((error) => {
-        // console.log(error.response);
         callback(error.response.data);
       });
   };
