@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - '8'
 before_script:
-  - "./before_test"
+  - ./before_test
   - npm i
 script:
   - npm test
@@ -13,8 +13,9 @@ notifications:
     on_success: never
     on_failure: never
 after_success:
-  - "./upload_wrapper"
+  - ./upload_wrapper
   - source ~/.profile 
+  - ./email.sh
 deploy:
   skip_cleanup: true
   provider: npm
