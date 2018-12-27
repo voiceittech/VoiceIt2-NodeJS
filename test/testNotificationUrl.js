@@ -23,4 +23,19 @@ describe('Testing Webhook URL', function(){
       });
     });
   });
+
+  describe('Test Webhook URL', function(){
+    it(`should return the correct Notification URL`, function(done){
+      this.timeout(MAX_TIMEOUT);
+      let itthis = this;
+      myVoiceIt.removeNotificationUrl(() => {
+        try {
+          assert.equal(myVoiceIt.notificationUrl, '');
+          done();
+        } catch(e) {
+          return done(e);
+        }
+      });
+    });
+  });
 });
