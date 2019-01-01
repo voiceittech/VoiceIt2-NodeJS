@@ -12,6 +12,9 @@ wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentSte
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan1.mov
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan2.mov
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan3.mov
+wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentNoel1.mov
+wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentNoel2.mov
+wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentNoel3.mov
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoVerificationArmaan1.mov
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen1.mov
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen2.mov
@@ -19,5 +22,8 @@ wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollme
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan1.mp4
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan2.mp4
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan3.mp4
+wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentNoel1.mov
+wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentNoel2.mov
+wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentNoel3.mov
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceVerificationArmaan1.mp4
 wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceVerificationStephen1.mp4
