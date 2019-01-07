@@ -13,7 +13,7 @@ notifications:
     on_success: never
     on_failure: never
 after_success:
-  - ./upload_wrapper
+  - ./release.sh
   - source ~/.profile 
   - ./email.sh
 deploy:
