@@ -1,18 +1,18 @@
-let assert = require('assert');
-let config = require('../utilities/test-config');
-let voiceit = require('../index');
-let utilities = require('../utilities/utilities');
-let responseCode = require('../utilities/response-code');
-let voiceIdentificationTestCases = require('../test-cases/voiceIdentificationTestCases');
-let videoIdentificationTestCases = require('../test-cases/videoIdentificationTestCases');
-let faceIdentificationTestCases = require('../test-cases/faceIdentificationTestCases');
-let voiceIdentificationByUrlTestCases = require('../test-cases/voiceIdentificationByUrlTestCases');
-let videoIdentificationByUrlTestCases = require('../test-cases/videoIdentificationByUrlTestCases');
-let faceIdentificationByUrlTestCases = require('../test-cases/faceIdentificationByUrlTestCases');
+const assert = require('assert');
+const config = require('../utilities/test-config');
+const voiceit = require('../index');
+const utilities = require('../utilities/utilities');
+const responseCode = require('../utilities/response-code');
+const voiceIdentificationTestCases = require('../test-cases/voiceIdentificationTestCases');
+const videoIdentificationTestCases = require('../test-cases/videoIdentificationTestCases');
+const faceIdentificationTestCases = require('../test-cases/faceIdentificationTestCases');
+const voiceIdentificationByUrlTestCases = require('../test-cases/voiceIdentificationByUrlTestCases');
+const videoIdentificationByUrlTestCases = require('../test-cases/videoIdentificationByUrlTestCases');
+const faceIdentificationByUrlTestCases = require('../test-cases/faceIdentificationByUrlTestCases');
 
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
-let MAX_TIMEOUT = 100000;
-let SETUP_TIMEOUT = 500000;
+const MAX_TIMEOUT = 100000;
+const SETUP_TIMEOUT = 500000;
 
 const identification  = {
   currentUserIds: [],

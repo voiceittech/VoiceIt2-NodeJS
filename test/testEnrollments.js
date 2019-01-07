@@ -1,31 +1,31 @@
-let assert = require('assert');
-let config = require('../utilities/test-config');
-let voiceit = require('../index');
-let utilities = require('../utilities/utilities');
-let responseCode = require('../utilities/response-code');
-let createVoiceEnrollmentTestCases = require('../test-cases/createVoiceEnrollmentTestCases');
-let createVoiceEnrollmentByUrlTestCases = require('../test-cases/createVoiceEnrollmentByUrlTestCases');
-let createFaceEnrollmentTestCases = require('../test-cases/createFaceEnrollmentTestCases');
-let createFaceEnrollmentByUrlTestCases = require('../test-cases/createFaceEnrollmentByUrlTestCases');
-let createVideoEnrollmentTestCases = require('../test-cases/createVideoEnrollmentTestCases');
-let createVideoEnrollmentByUrlTestCases = require('../test-cases/createVideoEnrollmentByUrlTestCases');
+const assert = require('assert');
+const config = require('../utilities/test-config');
+const voiceit = require('../index');
+const utilities = require('../utilities/utilities');
+const responseCode = require('../utilities/response-code');
+const createVoiceEnrollmentTestCases = require('../test-cases/createVoiceEnrollmentTestCases');
+const createVoiceEnrollmentByUrlTestCases = require('../test-cases/createVoiceEnrollmentByUrlTestCases');
+const createFaceEnrollmentTestCases = require('../test-cases/createFaceEnrollmentTestCases');
+const createFaceEnrollmentByUrlTestCases = require('../test-cases/createFaceEnrollmentByUrlTestCases');
+const createVideoEnrollmentTestCases = require('../test-cases/createVideoEnrollmentTestCases');
+const createVideoEnrollmentByUrlTestCases = require('../test-cases/createVideoEnrollmentByUrlTestCases');
 
-let getAllFaceEnrollmentsTestCases = require('../test-cases/getAllFaceEnrollmentsTestCases');
-let getAllVoiceEnrollmentsTestCases = require('../test-cases/getAllVoiceEnrollmentsTestCases');
-let getAllVideoEnrollmentsTestCases = require('../test-cases/getAllVideoEnrollmentsTestCases');
+const getAllFaceEnrollmentsTestCases = require('../test-cases/getAllFaceEnrollmentsTestCases');
+const getAllVoiceEnrollmentsTestCases = require('../test-cases/getAllVoiceEnrollmentsTestCases');
+const getAllVideoEnrollmentsTestCases = require('../test-cases/getAllVideoEnrollmentsTestCases');
 
-let deleteFaceEnrollmentTestCases = require('../test-cases/deleteFaceEnrollmentTestCases');
-let deleteVoiceEnrollmentTestCases = require('../test-cases/deleteVoiceEnrollmentTestCases');
-let deleteVideoEnrollmentTestCases = require('../test-cases/deleteVideoEnrollmentTestCases');
+const deleteFaceEnrollmentTestCases = require('../test-cases/deleteFaceEnrollmentTestCases');
+const deleteVoiceEnrollmentTestCases = require('../test-cases/deleteVoiceEnrollmentTestCases');
+const deleteVideoEnrollmentTestCases = require('../test-cases/deleteVideoEnrollmentTestCases');
 
-let deleteAllVoiceEnrollmentsTestCases = require('../test-cases/deleteAllVoiceEnrollmentsTestCases');
-let deleteAllFaceEnrollmentsTestCases = require('../test-cases/deleteAllFaceEnrollmentsTestCases');
-let deleteAllVideoEnrollmentsTestCases = require('../test-cases/deleteAllVideoEnrollmentsTestCases');
-let deleteAllEnrollmentsTestCases = require('../test-cases/deleteAllEnrollmentsTestCases');
+const deleteAllVoiceEnrollmentsTestCases = require('../test-cases/deleteAllVoiceEnrollmentsTestCases');
+const deleteAllFaceEnrollmentsTestCases = require('../test-cases/deleteAllFaceEnrollmentsTestCases');
+const deleteAllVideoEnrollmentsTestCases = require('../test-cases/deleteAllVideoEnrollmentsTestCases');
+const deleteAllEnrollmentsTestCases = require('../test-cases/deleteAllEnrollmentsTestCases');
 
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
-let MAX_TIMEOUT =   100000;
-let SETUP_TIMEOUT = 100000;
+const MAX_TIMEOUT =   100000;
+const SETUP_TIMEOUT = 100000;
 
 const enrollments  = {
   currentUserId:'',

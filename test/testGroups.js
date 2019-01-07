@@ -1,18 +1,18 @@
-let assert = require('assert');
-let config = require('../utilities/test-config');
-let voiceit = require('../index');
-let utilities = require('../utilities/utilities');
-let responseCode = require('../utilities/response-code');
-let getAllGroupsTestCases = require('../test-cases/getAllGroupsTestCases');
-let createGroupTestCases = require('../test-cases/createGroupTestCases');
-let checkGroupExistsTestCases = require('../test-cases/checkGroupExistsTestCases');
-let addUserToGroupTestCases = require('../test-cases/addUserToGroupTestCases');
-let removeUserFromGroupTestCases = require('../test-cases/removeUserFromGroupTestCases');
-let deleteGroupTestCases = require('../test-cases/deleteGroupTestCases');
+const assert = require('assert');
+const config = require('../utilities/test-config');
+const voiceit = require('../index');
+const utilities = require('../utilities/utilities');
+const responseCode = require('../utilities/response-code');
+const getAllGroupsTestCases = require('../test-cases/getAllGroupsTestCases');
+const createGroupTestCases = require('../test-cases/createGroupTestCases');
+const checkGroupExistsTestCases = require('../test-cases/checkGroupExistsTestCases');
+const addUserToGroupTestCases = require('../test-cases/addUserToGroupTestCases');
+const removeUserFromGroupTestCases = require('../test-cases/removeUserFromGroupTestCases');
+const deleteGroupTestCases = require('../test-cases/deleteGroupTestCases');
 
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
-let MAX_TIMEOUT = 30000;
-let SETUP_TIMEOUT = 20000;
+const MAX_TIMEOUT = 30000;
+const SETUP_TIMEOUT = 20000;
 
 const groups  = {
   currentUserIds: [],

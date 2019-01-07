@@ -1,17 +1,17 @@
-let assert = require('assert');
-let config = require('../utilities/test-config');
-let voiceit = require('../index');
-let utilities = require('../utilities/utilities');
-let responseCode = require('../utilities/response-code');
-let voiceVerificationTestCases = require('../test-cases/voiceVerificationTestCases');
-let faceVerificationTestCases = require('../test-cases/faceVerificationTestCases');
-let faceVerificationByUrlTestCases = require('../test-cases/faceVerificationByUrlTestCases');
-let voiceVerificationByUrlTestCases = require('../test-cases/voiceVerificationByUrlTestCases');
-let videoVerificationTestCases = require('../test-cases/videoVerificationTestCases');
-let videoVerificationByUrlTestCases = require('../test-cases/videoVerificationByUrlTestCases');
+const assert = require('assert');
+const config = require('../utilities/test-config');
+const voiceit = require('../index');
+const utilities = require('../utilities/utilities');
+const responseCode = require('../utilities/response-code');
+const voiceVerificationTestCases = require('../test-cases/voiceVerificationTestCases');
+const faceVerificationTestCases = require('../test-cases/faceVerificationTestCases');
+const faceVerificationByUrlTestCases = require('../test-cases/faceVerificationByUrlTestCases');
+const voiceVerificationByUrlTestCases = require('../test-cases/voiceVerificationByUrlTestCases');
+const videoVerificationTestCases = require('../test-cases/videoVerificationTestCases');
+const videoVerificationByUrlTestCases = require('../test-cases/videoVerificationByUrlTestCases');
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
-let MAX_TIMEOUT = 100000;
-let SETUP_TIMEOUT = 300000;
+const MAX_TIMEOUT = 100000;
+const SETUP_TIMEOUT = 300000;
 
 const verification = {
   currentUserIds: [],

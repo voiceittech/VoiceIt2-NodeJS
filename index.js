@@ -21,6 +21,7 @@ function VoiceIt2(apk, tok) {
     },
     headers: {
       platformId: '31',
+      platformVersion: '2.2.0',
     },
   });
 
@@ -602,29 +603,15 @@ function VoiceIt2(apk, tok) {
     if (options.userId === undefined) {
       callback({ status: 400, responseCode: 'FAIL', message: 'Missing userId argument' });
     }
-    if (this.notificationUrl === undefined && options.timeOut === undefined) {
+    if (options.timeOut === undefined) {
       this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token`)
         .then((httpResponse) => {
           callback(httpResponse.data);
         }).catch((error) => {
           callback(error.response.data);
         });
-    } else if (this.notificationUrl === undefined && options.timeOut !== undefined) {
+    } else {
       this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token?timeOut=${options.timeOut}`)
-        .then((httpResponse) => {
-          callback(httpResponse.data);
-        }).catch((error) => {
-          callback(error.response.data);
-        });
-    } else if (this.notificationUrl !== undefined && options.timeOut === undefined) {
-      this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token${this.notificationUrl}`)
-        .then((httpResponse) => {
-          callback(httpResponse.data);
-        }).catch((error) => {
-          callback(error.response.data);
-        });
-    } else if (this.notificationUrl !== undefined && options.timeOut !== undefined) {
-      this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token${this.notificationUrl}&timeOut=${options.timeOut}`)
         .then((httpResponse) => {
           callback(httpResponse.data);
         }).catch((error) => {

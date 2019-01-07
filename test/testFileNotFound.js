@@ -1,11 +1,11 @@
-let assert = require('assert');
-let config = require('../utilities/test-config');
-let voiceit = require('../index');
-let utilities = require('../utilities/utilities');
-let responseCode = require('../utilities/response-code');
+const assert = require('assert');
+const config = require('../utilities/test-config');
+const voiceit = require('../index');
+const utilities = require('../utilities/utilities');
+const responseCode = require('../utilities/response-code');
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
-let MAX_TIMEOUT = 30000;
-let SETUP_TIMEOUT = 20000;
+const MAX_TIMEOUT = 30000;
+const SETUP_TIMEOUT = 20000;
 
 describe('Testing File Not Found', function(){
   before(function(done){
