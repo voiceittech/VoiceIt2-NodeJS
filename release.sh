@@ -49,7 +49,6 @@ then
     releasetype="RELEASEPATCH"
     patch=$(($patch+1))
   else
-    echo "Must specify RELEASEMAJOR, RELEASEMINOR, or RELEASEPATCH in the title." 1>&2
     curl -X POST -H 'Content-type: application/json' --data '{
       "icon_url": "https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/TravisCI-Mascot-1.png",
       "username": "Release Wrapper Gate",
@@ -60,6 +59,7 @@ then
             }
         ]
     }' 'https://hooks.slack.com/services/'$SLACKPARAM1'/'$SLACKPARAM2'/'$SLACKPARAM3
+    echo "Must specify RELEASEMAJOR, RELEASEMINOR, or RELEASEPATCH in the title." 1>&2
     exit 1
   fi
 
