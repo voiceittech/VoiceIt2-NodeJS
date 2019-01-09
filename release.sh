@@ -58,14 +58,9 @@ then
 
   if [[ $wrapperplatformversion = $version ]];
   then
-    REPLACE_VERSION='s/'$oldversion'/'$version'/g'
-    sed -i $REPLACE_VERSION package.json
-    cat package.json | awk 'NR==3'
     export DO_DEPLOY=YES
     echo "DO_DEPLOY=YES" >> ~/.profile
   else
-    export DO_DEPLOY=NO
-    echo "DO_DEPLOY=NO" >> ~/.profile
     curl -X POST -H 'Content-type: application/json' --data '{
       "icon_url": "https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/TravisCI-Mascot-1.png",
       "username": "Release Wrapper Gate",
@@ -81,10 +76,6 @@ then
   fi
 
 else
-  export DO_DEPLOY=NO
-  echo "DO_DEPLOY=NO" >> ~/.profile
-  export NEWVERSION=$version
-  echo "NEWVERSION="$version >> ~/.profile
   echo "Tests passed but did not deploy"
   exit 0
 fi

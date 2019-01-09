@@ -2,6 +2,7 @@ const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
 const querystring = require('querystring');
+const pckg = require('./package.json');
 
 const BASE_URL = 'https://api.voiceit.io';
 
@@ -21,7 +22,7 @@ function VoiceIt2(apk, tok) {
     },
     headers: {
       platformId: '31',
-      platformVersion: '2.2.2',
+      platformVersion: pckg.version,
     },
   });
 

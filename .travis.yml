@@ -53,5 +53,3 @@ deploy:
   on:
     branch: master
     condition: $DO_DEPLOY = YES
-after_deploy:
-  - ./after_deploy.sh
