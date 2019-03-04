@@ -6,20 +6,20 @@ const voiceIdentificationTestCases = [
     expectedRc: responseCode.SUCCESS,
     expectedSc: 200,
     contentLanguage: config.CONTENT_LANGUAGE_REAL,
-    audioFilePath: config.ENROLLMENT_FILE_NOEL_1,
+    audioFilePath: config.ENROLLMENT_FILE_A_1,
     expectedText: config.ENGLISH_PHRASE,
     phrase: config.ENGLISH_PHRASE,
-    user: 'Armaan',
+    user: 'B',
     expectedMessage:'Successfully identified voice for user with userId : usr_([a-z0-9]){32} in group with groupId : grp_([a-z0-9]){32}'
   },
   {
     expectedRc: responseCode.SUCCESS,
     expectedSc: 200,
     contentLanguage: config.CONTENT_LANGUAGE_REAL,
-    audioFilePath: config.ENROLLMENT_FILE_STEPHEN_1,
+    audioFilePath: config.ENROLLMENT_FILE_C_1,
     expectedText: config.ENGLISH_PHRASE,
     phrase: config.ENGLISH_PHRASE,
-    user: 'Stephen',
+    user: 'C',
     expectedMessage:'Successfully identified voice for user with userId : usr_([a-z0-9]){32} in group with groupId : grp_([a-z0-9]){32}'
   }
 ];

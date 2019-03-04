@@ -76,15 +76,15 @@ const verification = {
         myVoiceIt.createUser((jsonResponse) => {
           if (jsonResponse.responseCode == responseCode.SUCCESS) {
             verification.currentUserIds.push(jsonResponse.userId);
-            verification.setupVoiceEnrollment(config.ENROLLMENT_FILE_NOEL_1, () => {
-              verification.setupVoiceEnrollment(config.ENROLLMENT_FILE_NOEL_2, () => {
-                verification.setupVoiceEnrollment(config.ENROLLMENT_FILE_NOEL_3, () => {
-                  verification.setupFaceEnrollment(config.FACE_ENROLLMENT_FILE_ARMAAN_1, () => {
-                    verification.setupFaceEnrollment(config.FACE_ENROLLMENT_FILE_ARMAAN_2, () => {
-                      verification.setupFaceEnrollment(config.FACE_ENROLLMENT_FILE_ARMAAN_3, () => {
-                        verification.setupVideoEnrollment(config.VIDEO_ENROLLMENT_FILE_ARMAAN_1, () => {
-                          verification.setupVideoEnrollment(config.VIDEO_ENROLLMENT_FILE_ARMAAN_2, () => {
-                            verification.setupVideoEnrollment(config.VIDEO_ENROLLMENT_FILE_ARMAAN_3, () => {
+            verification.setupVoiceEnrollment(config.ENROLLMENT_FILE_A_1, () => {
+              verification.setupVoiceEnrollment(config.ENROLLMENT_FILE_A_2, () => {
+                verification.setupVoiceEnrollment(config.ENROLLMENT_FILE_A_3, () => {
+                  verification.setupFaceEnrollment(config.FACE_ENROLLMENT_FILE_B_1, () => {
+                    verification.setupFaceEnrollment(config.FACE_ENROLLMENT_FILE_B_2, () => {
+                      verification.setupFaceEnrollment(config.FACE_ENROLLMENT_FILE_B_3, () => {
+                        verification.setupVideoEnrollment(config.VIDEO_ENROLLMENT_FILE_B_1, () => {
+                          verification.setupVideoEnrollment(config.VIDEO_ENROLLMENT_FILE_B_2, () => {
+                            verification.setupVideoEnrollment(config.VIDEO_ENROLLMENT_FILE_B_3, () => {
                                     next();
                             });
                           });

@@ -4,32 +4,32 @@ node_js:
 before_script:
   - mkdir test-data
   - cd test-data
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentArmaanMyFaceAndVoice.m4a
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentNoel1.wav
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentNoel2.wav
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentNoel3.wav
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/verificationNoel1.wav
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentStephen1.wav
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentStephen2.wav
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentStephen3.wav
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan1.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan2.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentArmaan3.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentNoel1.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentNoel2.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentNoel3.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoVerificationArmaan1.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen1.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen2.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentStephen3.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan1.mp4
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan2.mp4
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentArmaan3.mp4
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentNoel1.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentNoel2.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentNoel3.mov
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceVerificationArmaan1.mp4
-  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceVerificationStephen1.mp4
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentBMyFaceAndVoice.m4a
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentA1.wav
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentA2.wav
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentA3.wav
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/verificationA1.wav
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentC1.wav
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentC2.wav
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentC3.wav
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentB1.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentB2.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentB3.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentA1.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentA2.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentA3.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoVerificationB1.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentC1.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentC2.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentC3.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentB1.mp4
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentB2.mp4
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentB3.mp4
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentA1.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentA2.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceEnrollmentA3.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceVerificationB1.mp4
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/faceVerificationC1.mp4
   - cd ..
   - npm i
 script:
@@ -47,7 +47,7 @@ after_success:
 deploy:
   skip_cleanup: true
   provider: npm
-  email: armaan@voiceit.io
+  email: B@voiceit.io
   api_key:
     secure: Kadq49lnbjEmJWIwWj9QloOL7h7DalnJiCJv0ea3KEAO1lzCVZ02JRZiD54P187EdtYRoYq+2CbVhEUaly5h5zHVbWvqLG1FPfKFCBlFZl2VWv5vQdIFm/QiO5oN6zTfw4f0AbXq9+VEaqB7jd/8Ss+HD3v9y3qRgGzjZiJGHXmYihlTqRvIiX/6n0tbvoDKp+ZACpg86dPFXR22y275tVINcd337DtSFXvmjd8eDO9mR8Fvd1CJjUCnSVYe48mgBWqCe/jTuEpNwVxlhY1vgUFh3u949BIB4NSBvthWFLrNDtzGdiClwvi9rkGCEwg9yIV1g20q3vcsuLzbcuVFjvP/fYcGzx0UyO4gA4BoQEJiGY7IW5PVNcJgzzNJL1OJAX3imemn0PC548/BENXiYEyxb/WZ1FqD7yUlEnY6KbyJiqlFAsnkKW9OtUecKneK1rBh8+G7/QGlyiUFcm7VG24SFwCEZiYuSDwBnTyGlDoeTN+dPuFeb07aE/YT7QH6QrtyAbLTcRAHJk22Sbo55Q4Z5LF3K42kD/BqSWQEod02g0NKV7fJqp0LoRvFRMM/8YO66FdIXO9DvdoorflEN9r45UJwC8flPp2GgrbbKEVE1RewCMdiMTe3e8xf11+KkyOT4/ch4LzyqmAWH5aBNFY9EHTGMNZBgVWJB73P7DE=
   on:

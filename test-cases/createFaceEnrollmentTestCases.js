@@ -5,7 +5,7 @@ const createFaceEnrollmentTestCases = [
 {
     expectedRc: responseCode.SUCCESS,
     expectedSc: 201,
-    videoFilePath: config.FACE_ENROLLMENT_FILE_ARMAAN_1,
+    videoFilePath: config.FACE_ENROLLMENT_FILE_B_1,
     expectedMessage:'Successfully enrolled face for user with userId : usr_([a-z0-9]){32}'
 }
 ];

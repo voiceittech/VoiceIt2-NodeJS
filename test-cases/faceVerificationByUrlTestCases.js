@@ -5,7 +5,7 @@ const faceVerificationByUrlTestCases = [
 {
   expectedRc: responseCode.SUCCESS,
   expectedSc: 200,
-  videoFileURL: config.getURL(config.FACE_VERIFICATION_FILE_ARMAAN_1),
+  videoFileURL: config.getURL(config.FACE_VERIFICATION_FILE_B_1),
   expectedMessage:'Successfully verified face for user with userId : usr_([a-z0-9]){32}'
 }
 ];
