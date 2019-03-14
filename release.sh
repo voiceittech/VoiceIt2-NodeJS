@@ -97,7 +97,7 @@ then
           formattedmessages=$formattedmessages'|'$i
         done
 
-        json='{"authenticationPassword":"'$EMAILAUTHPASS'", "messages" : "'$formattedmessages'", "packagemanaged": "true", "instructions": "npm update"}'
+        json='{"authenticationPassword":"'$EMAILAUTHPASS'", "messages" : "'$formattedmessages'", "packageManaged": "true", "instructions": "npm update"}'
         curl -X POST -H "Content-Type: application/json" -d $json "https://api.voiceit.io/platform/31"
       fi
 
