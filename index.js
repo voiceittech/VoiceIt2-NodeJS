@@ -620,6 +620,18 @@ function VoiceIt2(apk, tok) {
         });
     }
   };
+
+  this.expireUserTokens = (options, callback) => {
+    if (options.userId === undefined) {
+      callback({ status: 400, responseCode: 'FAIL', message: 'Missing userId argument' });
+    }
+    this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/expireTokens`)
+      .then((httpResponse) => {
+        callback(httpResponse.data);
+      }).catch((error) => {
+        callback(error.response.data);
+      });
+  };
 }
 
 module.exports = VoiceIt2;

@@ -5,8 +5,8 @@ const createUserTestCases = [
 {
   expectedRc: responseCode.SUCCESS,
   expectedSc: 201,
-  message: 'Successfully created userToken for usr_([a-z0-9]){32}',
-  userToken: 'utk_([a-z0-9]){32}_([0-9]){13}'
-},
+  message: 'Successfully expired active userTokens for user with userId : usr_([a-z0-9]){32}',
+}
+
 ];
 module.exports = createUserTestCases;

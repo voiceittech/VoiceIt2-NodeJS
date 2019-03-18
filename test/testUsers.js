@@ -8,6 +8,7 @@ const checkUserExistsTestCases = require('../test-cases/checkUserExistsTestCases
 const createUserTestCases = require('../test-cases/createUserTestCases');
 const deleteUserTestCases = require('../test-cases/deleteUserTestCases');
 const createUserTokenTestCases = require('../test-cases/createUserTokenTestCases');
+const expireUserTokenTestCases = require('../test-cases/expireUserTokensTestCases');
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
 const MAX_TIMEOUT = 30000;
 const SETUP_TIMEOUT = 20000;
@@ -110,7 +111,7 @@ describe('Testing All User API Calls', function(){
       });
   });
 
-  describe('Test User Token', function(){
+  describe('Test Create User Token', function(){
       createUserTokenTestCases.forEach(function(testCase){
         it(`should return ${testCase.expectedRc}`, function(done){
           this.timeout(MAX_TIMEOUT);
@@ -125,6 +126,30 @@ describe('Testing All User API Calls', function(){
                 assert.equal(jsonResponse.responseCode, testCase.expectedRc);
                 assert.equal(jsonResponse.status, testCase.expectedSc);
                 assert.ok(utilities.compare(jsonResponse.userToken, testCase.userToken));
+                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
+                done();
+              } catch(e) {
+                return done(e);
+              }
+            });
+        });
+      });
+  });
+
+  describe('Test Expire User Tokens', function(){
+      createUserTokenTestCases.forEach(function(testCase){
+        it(`should return ${testCase.expectedRc}`, function(done){
+          this.timeout(MAX_TIMEOUT);
+          let itThis = this;
+          myVoiceIt.expireUserTokens(
+            {
+              userId: testCase.userId ? testCase.userId : users.currentUserIds[0],
+            },
+            (jsonResponse) => {
+              try {
+                utilities.printIfError(testCase.expectedRc, jsonResponse);
+                assert.equal(jsonResponse.responseCode, testCase.expectedRc);
+                assert.equal(jsonResponse.status, testCase.expectedSc);
                 assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
                 done();
               } catch(e) {
