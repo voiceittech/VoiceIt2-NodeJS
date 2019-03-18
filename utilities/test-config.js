@@ -10,6 +10,7 @@ const TestConfig = {
   ENROLLMENT_FILE_A_2 : 'test-data/enrollmentA2.wav',
   ENROLLMENT_FILE_A_3 : 'test-data/enrollmentA3.wav',
   VERIFICATION_FILE_A_1 : 'test-data/verificationA1.wav',
+  VERIFICATION_FILE_A_2 : 'test-data/enrollmentA4.wav',
   ENROLLMENT_FILE_C_1 : 'test-data/enrollmentC1.wav',
   ENROLLMENT_FILE_C_2 : 'test-data/enrollmentC2.wav',
   ENROLLMENT_FILE_C_3 : 'test-data/enrollmentC3.wav',
