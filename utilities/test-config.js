@@ -20,6 +20,7 @@ const TestConfig = {
   VIDEO_ENROLLMENT_FILE_A_2 : 'test-data/videoEnrollmentA2.mov',
   VIDEO_ENROLLMENT_FILE_A_3 : 'test-data/videoEnrollmentA3.mov',
   VIDEO_VERIFICATION_FILE_B_1 : 'test-data/videoVerificationB1.mov',
+  VIDEO_VERIFICATION_FILE_B_1 : 'test-data/videoVerificationB2.mp4',
   VIDEO_VERIFICATION_FILE_A_1 : 'test-data/videoVerificationA1.mov',
   VIDEO_ENROLLMENT_FILE_C_1 : 'test-data/videoEnrollmentC1.mov',
   VIDEO_ENROLLMENT_FILE_C_2 : 'test-data/videoEnrollmentC2.mov',

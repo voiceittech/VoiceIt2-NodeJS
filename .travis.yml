@@ -13,6 +13,7 @@ before_script:
   - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentC2.wav
   - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/enrollmentC3.wav
   - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentB1.mov
+  - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentB2.mp4
   - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentB2.mov
   - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentB3.mov
   - wget https://s3.amazonaws.com/voiceit-api2-testing-files/test-data/videoEnrollmentA1.mov
