@@ -14,13 +14,6 @@ const getAllFaceEnrollmentsTestCases = require('../test-cases/getAllFaceEnrollme
 const getAllVoiceEnrollmentsTestCases = require('../test-cases/getAllVoiceEnrollmentsTestCases');
 const getAllVideoEnrollmentsTestCases = require('../test-cases/getAllVideoEnrollmentsTestCases');
 
-const deleteFaceEnrollmentTestCases = require('../test-cases/deleteFaceEnrollmentTestCases');
-const deleteVoiceEnrollmentTestCases = require('../test-cases/deleteVoiceEnrollmentTestCases');
-const deleteVideoEnrollmentTestCases = require('../test-cases/deleteVideoEnrollmentTestCases');
-
-const deleteAllVoiceEnrollmentsTestCases = require('../test-cases/deleteAllVoiceEnrollmentsTestCases');
-const deleteAllFaceEnrollmentsTestCases = require('../test-cases/deleteAllFaceEnrollmentsTestCases');
-const deleteAllVideoEnrollmentsTestCases = require('../test-cases/deleteAllVideoEnrollmentsTestCases');
 const deleteAllEnrollmentsTestCases = require('../test-cases/deleteAllEnrollmentsTestCases');
 
 let myVoiceIt = new voiceit(process.env.VIAPIKEY, process.env.VIAPITOKEN);
@@ -161,29 +154,6 @@ describe('Testing All Enrollment API Calls', function(){
       });
   });
 
-  describe('Test Delete Voice Enrollment', function(){
-      deleteVoiceEnrollmentTestCases.forEach(function(testCase){
-        it(`should return ${testCase.expectedRc}`, function(done){
-          this.timeout(MAX_TIMEOUT);
-          let itThis = this;
-          myVoiceIt.deleteVoiceEnrollment(
-            {
-              userId : testCase.userId ? testCase.userId : enrollments.currentUserId,
-              voiceEnrollmentId : (testCase.voiceEnrollmentId == null) ? enrollments.currentVoiceEnrollmentIds[0] : testCase.voiceEnrollmentId
-            },(jsonResponse) => {
-              try {
-                utilities.printIfError(testCase.expectedRc, jsonResponse);
-                assert.equal(jsonResponse.status, testCase.expectedSc);
-                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
-                done();
-              } catch(e) {
-                return done(e);
-              }
-            });
-        });
-      });
-  });
-
   describe('Test Create Voice Enrollment by URL', function(){
       createVoiceEnrollmentByUrlTestCases.forEach(function(testCase){
         it(`should return ${testCase.expectedRc}`, function(done){
@@ -231,29 +201,6 @@ describe('Testing All Enrollment API Calls', function(){
               }
               try {
                 assert.equal(jsonResponse.responseCode, testCase.expectedRc);
-                assert.equal(jsonResponse.status, testCase.expectedSc);
-                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
-                done();
-              } catch(e) {
-                return done(e);
-              }
-            });
-        });
-      });
-  });
-
-  describe('Test Delete Face Enrollment', function(){
-      deleteFaceEnrollmentTestCases.forEach(function(testCase){
-        it(`should return ${testCase.expectedRc}`, function(done){
-          this.timeout(MAX_TIMEOUT);
-          let itThis = this;
-          myVoiceIt.deleteFaceEnrollment(
-            {
-              userId : testCase.userId ? testCase.userId : enrollments.currentUserId,
-              faceEnrollmentId : (testCase.faceEnrollmentId == null) ? enrollments.currentFaceEnrollmentIds[0] : testCase.faceEnrollmentId
-            },(jsonResponse) => {
-              try {
-                utilities.printIfError(testCase.expectedRc, jsonResponse);
                 assert.equal(jsonResponse.status, testCase.expectedSc);
                 assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
                 done();
@@ -322,29 +269,6 @@ describe('Testing All Enrollment API Calls', function(){
       });
   });
 
-  describe('Test Delete Video Enrollment', function(){
-      deleteVideoEnrollmentTestCases.forEach(function(testCase){
-        it(`should return ${testCase.expectedRc}`, function(done){
-          this.timeout(MAX_TIMEOUT);
-          let itThis = this;
-          myVoiceIt.deleteVideoEnrollment(
-            {
-              userId : testCase.userId ? testCase.userId : enrollments.currentUserId,
-              videoEnrollmentId : (testCase.videoEnrollmentId == null) ? enrollments.currentVideoEnrollmentIds[0] : testCase.videoEnrollmentId
-            },(jsonResponse) => {
-              try {
-                utilities.printIfError(testCase.expectedRc, jsonResponse);
-                assert.equal(jsonResponse.status, testCase.expectedSc);
-                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
-                done();
-              } catch(e) {
-                return done(e);
-              }
-            });
-        });
-      });
-  });
-
   describe('Test Create Video Enrollment by URL', function(){
       createVideoEnrollmentByUrlTestCases.forEach(function(testCase){
         it(`should return ${testCase.expectedRc}`, function(done){
@@ -363,75 +287,6 @@ describe('Testing All Enrollment API Calls', function(){
                 assert.equal(utilities.low(jsonResponse.text), utilities.low(testCase.expectedText));
               }
               try {
-                assert.equal(jsonResponse.responseCode, testCase.expectedRc);
-                assert.equal(jsonResponse.status, testCase.expectedSc);
-                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
-                done();
-              } catch(e) {
-                return done(e);
-              }
-            });
-        });
-      });
-  });
-
-  describe('Delete All Face Enrollments', function(){
-      deleteAllFaceEnrollmentsTestCases.forEach(function(testCase){
-        it(`should return ${testCase.expectedRc}`, function(done){
-          this.timeout(MAX_TIMEOUT);
-          let itThis = this;
-          myVoiceIt.deleteAllFaceEnrollments(
-            {
-              userId : testCase.userId ? testCase.userId : enrollments.currentUserId
-            },(jsonResponse) => {
-              utilities.printIfError(testCase.expectedRc, jsonResponse);
-              try {
-                assert.equal(jsonResponse.responseCode, testCase.expectedRc);
-                assert.equal(jsonResponse.status, testCase.expectedSc);
-                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
-                done();
-              } catch(e) {
-                return done(e);
-              }
-            });
-        });
-      });
-  });
-
-  describe('Delete All Voice Enrollments', function(){
-      deleteAllVoiceEnrollmentsTestCases.forEach(function(testCase){
-        it(`should return ${testCase.expectedRc}`, function(done){
-          this.timeout(MAX_TIMEOUT);
-          let itThis = this;
-          myVoiceIt.deleteAllVoiceEnrollments(
-            {
-              userId : testCase.userId ? testCase.userId : enrollments.currentUserId
-            },(jsonResponse) => {
-              try {
-                utilities.printIfError(testCase.expectedRc, jsonResponse);
-                assert.equal(jsonResponse.responseCode, testCase.expectedRc);
-                assert.equal(jsonResponse.status, testCase.expectedSc);
-                assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));
-                done();
-              } catch(e) {
-                return done(e);
-              }
-            });
-        });
-      });
-  });
-
-  describe('Delete All Video Enrollments', function(){
-      deleteAllVideoEnrollmentsTestCases.forEach(function(testCase){
-        it(`should return ${testCase.expectedRc}`, function(done){
-          this.timeout(MAX_TIMEOUT);
-          let itThis = this;
-          myVoiceIt.deleteAllVideoEnrollments(
-            {
-              userId : testCase.userId ? testCase.userId : enrollments.currentUserId
-            },(jsonResponse) => {
-              try {
-                utilities.printIfError(testCase.expectedRc, jsonResponse);
                 assert.equal(jsonResponse.responseCode, testCase.expectedRc);
                 assert.equal(jsonResponse.status, testCase.expectedSc);
                 assert.ok(utilities.compare(jsonResponse.message, testCase.expectedMessage));

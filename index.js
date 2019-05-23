@@ -311,60 +311,6 @@ function VoiceIt2(apk, tok) {
     });
   };
 
-  this.deleteFaceEnrollment = (options, callback) => {
-    this.axiosInstance.delete(`${BASE_URL}/enrollments/face/${options.userId}/${options.faceEnrollmentId}${this.notificationUrl}`)
-      .then((httpResponse) => {
-        callback(httpResponse.data);
-      }).catch((error) => {
-        callback(error.response.data);
-      });
-  };
-
-  this.deleteVoiceEnrollment = (options, callback) => {
-    this.axiosInstance.delete(`${BASE_URL}/enrollments/voice/${options.userId}/${options.voiceEnrollmentId}${this.notificationUrl}`)
-      .then((httpResponse) => {
-        callback(httpResponse.data);
-      }).catch((error) => {
-        callback(error.response.data);
-      });
-  };
-
-  this.deleteVideoEnrollment = (options, callback) => {
-    this.axiosInstance.delete(`${BASE_URL}/enrollments/video/${options.userId}/${options.videoEnrollmentId}${this.notificationUrl}`)
-      .then((httpResponse) => {
-        callback(httpResponse.data);
-      }).catch((error) => {
-        callback(error.response.data);
-      });
-  };
-
-  this.deleteAllFaceEnrollments = (options, callback) => {
-    this.axiosInstance.delete(`${BASE_URL}/enrollments/${options.userId}/face${this.notificationUrl}`)
-      .then((httpResponse) => {
-        callback(httpResponse.data);
-      }).catch((error) => {
-        callback(error.response.data);
-      });
-  };
-
-  this.deleteAllVoiceEnrollments = (options, callback) => {
-    this.axiosInstance.delete(`${BASE_URL}/enrollments/${options.userId}/voice${this.notificationUrl}`)
-      .then((httpResponse) => {
-        callback(httpResponse.data);
-      }).catch((error) => {
-        callback(error.response.data);
-      });
-  };
-
-  this.deleteAllVideoEnrollments = (options, callback) => {
-    this.axiosInstance.delete(`${BASE_URL}/enrollments/${options.userId}/video${this.notificationUrl}`)
-      .then((httpResponse) => {
-        callback(httpResponse.data);
-      }).catch((error) => {
-        callback(error.response.data);
-      });
-  };
-
   this.deleteAllEnrollments = (options, callback) => {
     this.axiosInstance.delete(`${BASE_URL}/enrollments/${options.userId}/all${this.notificationUrl}`)
       .then((httpResponse) => {
