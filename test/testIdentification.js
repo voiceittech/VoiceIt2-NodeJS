@@ -23,6 +23,7 @@ const identification  = {
       {
         userId : identification.currentUserIds[id],
         contentLanguage : cl ? cl : config.CONTENT_LANGUAGE_REAL,
+        phrase: config.ENGLISH_PHRASE,
         audioFilePath : filePath
       },(jsonResponse)=>{
         if(jsonResponse.responseCode == responseCode.SUCCESS){
@@ -39,6 +40,7 @@ const identification  = {
       {
         userId : identification.currentUserIds[id],
         contentLanguage : cl ? cl : config.CONTENT_LANGUAGE_REAL,
+        phrase: config.ENGLISH_PHRASE,
         videoFilePath : filePath
       },(jsonResponse)=>{
         if(jsonResponse.responseCode == responseCode.SUCCESS){

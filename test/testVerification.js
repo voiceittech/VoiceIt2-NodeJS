@@ -22,6 +22,7 @@ const verification = {
     myVoiceIt.createVoiceEnrollment({
       userId: verification.currentUserIds[0],
       contentLanguage: cl ? cl : config.CONTENT_LANGUAGE_REAL,
+      phrase: config.ENGLISH_PHRASE,
       audioFilePath: filePath
     }, (jsonResponse) => {
       if (jsonResponse.responseCode == responseCode.SUCCESS) {
@@ -49,6 +50,7 @@ const verification = {
     myVoiceIt.createVideoEnrollment({
       userId: verification.currentUserIds[1],
       contentLanguage: cl ? cl : config.CONTENT_LANGUAGE_REAL,
+      phrase: config.ENGLISH_PHRASE,
       videoFilePath: filePath
     }, (jsonResponse) => {
       if (jsonResponse.responseCode == responseCode.SUCCESS) {
