@@ -551,12 +551,10 @@ function VoiceIt2(apk, tok, baseUrl) {
   };
 
   this.createUserToken = (options, callback) => {
-
     if (options.userId === undefined || (options.secondsToTimeout !== undefined && typeof options.secondsToTimeout !== 'number')) {
       if (options.userId === undefined) {
         callback({ status: 400, responseCode: 'FAIL', message: 'Missing userId argument' });
       }
-
       if (options.secondsToTimeout !== undefined && typeof options.secondsToTimeout !== 'number') {
         callback({ status: 400, responseCode: 'FAIL', message: 'secondsToTimeout must be a numeric value' });
       }
