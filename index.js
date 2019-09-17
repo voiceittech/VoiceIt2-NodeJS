@@ -558,22 +558,20 @@ function VoiceIt2(apk, tok, baseUrl) {
       if (options.secondsToTimeout !== undefined && typeof options.secondsToTimeout !== 'number') {
         callback({ status: 400, responseCode: 'FAIL', message: 'secondsToTimeout must be a numeric value' });
       }
+    } else if (options.secondsToTimeout === undefined) {
+      this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token`)
+        .then((httpResponse) => {
+          callback(httpResponse.data);
+        }).catch((error) => {
+          callback(error.response.data);
+        });
     } else {
-      if (options.secondsToTimeout === undefined) {
-        this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token`)
-          .then((httpResponse) => {
-            callback(httpResponse.data);
-          }).catch((error) => {
-            callback(error.response.data);
-          });
-      } else {
-        this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token?timeOut=${options.secondsToTimeout}`)
-          .then((httpResponse) => {
-            callback(httpResponse.data);
-          }).catch((error) => {
-            callback(error.response.data);
-          });
-      }
+      this.axiosInstance.post(`${BASE_URL}/users/${options.userId}/token?timeOut=${options.secondsToTimeout}`)
+        .then((httpResponse) => {
+          callback(httpResponse.data);
+        }).catch((error) => {
+          callback(error.response.data);
+        });
     }
 
   };
