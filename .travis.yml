@@ -23,6 +23,7 @@ before_script:
   - wget https://drive.voiceit.io/files/videoEnrollmentA1.mov
   - wget https://drive.voiceit.io/files/videoEnrollmentA2.mov
   - wget https://drive.voiceit.io/files/videoEnrollmentA3.mov
+  - wget https://drive.voiceit.io/files/videoVerificationA1.mov
   - wget https://drive.voiceit.io/files/videoVerificationB1.mov
   - wget https://drive.voiceit.io/files/videoVerificationB2.mp4
   - wget https://drive.voiceit.io/files/videoEnrollmentC1.mov
