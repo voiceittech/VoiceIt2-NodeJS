@@ -54,7 +54,6 @@ notifications:
 after_success:
   - ./release.sh
   - source ~/.profile 
-  - ./email.sh
 deploy:
   skip_cleanup: true
   provider: npm
