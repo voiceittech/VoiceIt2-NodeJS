@@ -116,7 +116,7 @@ describe('Testing All Subaccount API Calls', function(){
           utilities.printIfError(responseCode.SUCCESS, jsonResponse);
           assert.equal(jsonResponse.responseCode, responseCode.SUCCESS);
           assert.equal(jsonResponse.status, 200);
-          assert.ok(utilities.compare(jsonResponse.message, 'Regenerated apiToken : tok_([a-z0-9]){32} for sub-account developer with apiKey : key_([a-z0-9]){32}'));
+          assert.ok(utilities.compare(jsonResponse.message, 'Regenerated apiToken : tok_([a-z0-9]){32} for developer sub-account with apiKey : key_([a-z0-9]){32}'));
           done();
         } catch(e) {
           return done(e);
@@ -139,7 +139,7 @@ describe('Testing All Subaccount API Calls', function(){
           utilities.printIfError(responseCode.SUCCESS, jsonResponse);
           assert.equal(jsonResponse.responseCode, responseCode.SUCCESS);
           assert.equal(jsonResponse.status, 200);
-          assert.ok(utilities.compare(jsonResponse.message, 'Deleted sub-account developer with apiKey : key_([a-z0-9]){32}'));
+          assert.ok(utilities.compare(jsonResponse.message, 'Deleted developer sub-account with apiKey : key_([a-z0-9]){32}'));
           done();
         } catch(e) {
           return done(e);
