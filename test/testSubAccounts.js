@@ -47,7 +47,7 @@ describe('Testing All Subaccount API Calls', function(){
           utilities.printIfError(responseCode.SUCCESS, jsonResponse);
           assert.equal(jsonResponse.responseCode, responseCode.SUCCESS);
           assert.equal(jsonResponse.status, 201);
-          assert.ok(utilities.compare(jsonResponse.message, 'Created new managed sub-account developer with apiKey : key_([a-z0-9]){32}'));
+          assert.ok(utilities.compare(jsonResponse.message, 'Created new managed developer sub-account with apiKey : key_([a-z0-9]){32}'));
           done();
         } catch(e) {
           return done(e);
@@ -74,7 +74,7 @@ describe('Testing All Subaccount API Calls', function(){
           utilities.printIfError(responseCode.SUCCESS, jsonResponse);
           assert.equal(jsonResponse.responseCode, responseCode.SUCCESS);
           assert.equal(jsonResponse.status, 201);
-          assert.ok(utilities.compare(jsonResponse.message, 'Created new unmanaged sub-account developer with apiKey : key_([a-z0-9]){32}'));
+          assert.ok(utilities.compare(jsonResponse.message, 'Created new unmanaged developer sub-account with apiKey : key_([a-z0-9]){32}'));
           done();
         } catch(e) {
           return done(e);
